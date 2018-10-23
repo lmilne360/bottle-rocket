@@ -10,12 +10,21 @@ import { map } from 'rxjs/operators';
 })
 export class HomeComponent implements OnInit {
   restaurants: Observable<[]>;
+  selected: any;
+  active: boolean;
   constructor(private rService: RestaurantService) { }
 
   ngOnInit() {
+    this.active = false;
   this.restaurants = this.rService.getRestaurants()
   .pipe(map((val: any) => val.restaurants));
 
+  }
+
+  toggleView(res?: any) {
+    if (res)this.selected = res;
+     this.active = !this.active;
+    console.log(res);
   }
 
 }

@@ -1,5 +1,5 @@
 <div *ngFor="let res of restaurants |async">
-  <li>
+  <li (click)='toggleView(res)'>
   <div class="restaurant-card" [ngStyle]="{ 'background-image': 'url(' + res.backgroundImageURL + ')'}">
 
     <div class="info">
@@ -10,3 +10,4 @@
   </div>
   </li>
 </div>
+<app-details [restaurant]='selected' [active]='active' (click)='toggleView()'></app-details>
