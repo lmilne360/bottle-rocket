@@ -1,0 +1,12 @@
+<div *ngFor="let res of restaurants |async">
+  <li>
+  <div class="restaurant-card" [ngStyle]="{ 'background-image': 'url(' + res.backgroundImageURL + ')'}">
+
+    <div class="info">
+       <p class='title'>{{res.name}}</p>
+       <p class="category">{{res.category}}</p>
+    </div>
+
+  </div>
+  </li>
+</div>
