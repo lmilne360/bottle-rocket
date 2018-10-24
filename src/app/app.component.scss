@@ -1,9 +1,0 @@
-.container{
-  display: grid;
-  grid-template-columns: 1fr ;
-}
-
-@media only screen and (min-width: 768px) {
-  /* For mobile phones: */
- .container{ grid-template-columns: 1fr 1fr}
-}
