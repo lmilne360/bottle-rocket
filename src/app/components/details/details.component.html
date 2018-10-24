@@ -1,11 +1,11 @@
-<div class="details-container" [ngClass]="{'active': active}">
+<div class="container" [ngClass]="{'active': active}">
     <div *ngIf="restaurant">
-        {{restaurant.location.address}}
-      {{restaurant.location.crossStreet}}
+        {{restaurant?.location.address}}
+      {{restaurant?.location.crossStreet}}
 
-      {{restaurant.formattedPhone}}
+      {{restaurant?.formattedPhone}}
 
-      {{ restaurant.contact.twitter ? '@'+restaurant.contact.twitter : null }}
+      {{ restaurant?.contact?.twitter ? '@'+restaurant.contact.twitter : null }}
     </div>
 </div>
 
