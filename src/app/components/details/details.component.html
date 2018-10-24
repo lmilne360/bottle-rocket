@@ -1,11 +1,33 @@
 <div class="container" [ngClass]="{'active': active}">
-    <div *ngIf="restaurant">
-        {{restaurant?.location.address}}
-      {{restaurant?.location.crossStreet}}
 
-      {{restaurant?.formattedPhone}}
 
-      {{ restaurant?.contact?.twitter ? '@'+restaurant.contact.twitter : null }}
+  <div #gmap style="width:auto;height:400px"></div>
+
+  <div *ngIf="restaurant">
+
+    <div class="info-container">
+
+      <div class="name-area">
+        <p class="name">{{restaurant.name}}</p>
+        <p class="category">{{restaurant.category}}</p>
+      </div>
+
+      <div class="info">
+        <div class="address">
+          <p>{{restaurant?.location.address}}</p>
+          <p>{{restaurant?.location.crossStreet}}</p>
+        </div>
+
+        <div class="phone">{{restaurant?.formattedPhone}}</div>
+
+        <div class="twitter">
+         <p>{{ restaurant?.contact?.twitter ? '@'+restaurant.contact.twitter : null }}</p>
+        </div>
+      </div>
     </div>
-</div>
 
+
+
+
+  </div>
+</div>

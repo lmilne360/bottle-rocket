@@ -1,3 +1,4 @@
+/// <reference types="@types/googlemaps" />
 import { Component, OnInit } from '@angular/core';
 import { RestaurantService } from 'src/app/services/restaurant.service';
 import { Observable } from 'rxjs';
@@ -22,7 +23,7 @@ export class HomeComponent implements OnInit {
   }
 
   toggleView(res?: any) {
-    if (res)this.selected = res;
+    if (res) {this.selected = res; }
      this.active = !this.active;
     console.log(res);
   }
