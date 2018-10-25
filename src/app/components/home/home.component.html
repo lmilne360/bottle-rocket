@@ -1,7 +1,7 @@
 <div class="container">
   <div class="list-wrapper">
-      <div *ngFor="let res of restaurants |async">
-          <li (click)='toggleView(res)'>
+      <div *ngFor="let res of restaurants; let i = index">
+          <li [routerLink]="[ '/restaurant', i]"  routerLinkActive="active">
           <div class="restaurant-card" [ngStyle]="{ 'background-image': 'url(' + res.backgroundImageURL + ')'}">
 
             <div class="info">
@@ -13,6 +13,5 @@
           </li>
         </div>
   </div>
-  <app-details [restaurant]='selected' [active]='active' (click)='toggleView()'></app-details>
 </div>
 

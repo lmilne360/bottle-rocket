@@ -1,14 +1,22 @@
 @import "variables";
-* {margin:0; padding: 12px; box-sizing: border-box;}
-  .header-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #fff;
-    height: 60px;
-    width: 100%;
-    background-color: $green;
-    position: relative;
+* {
+  margin: 0;
+  padding: 12px;
+  box-sizing: border-box;
+}
 
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #fff;
+  height: 60px;
+  width: 100%;
+  background-color: $green;
+  position: relative;
+  .header-image img{
+    height: fit-content;
   }
-  img{height: 60%; margin-left: auto;}
+}
+
+

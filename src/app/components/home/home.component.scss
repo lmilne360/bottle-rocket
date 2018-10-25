@@ -4,16 +4,14 @@
   border: 0;
   font-size: 100%;
   overflow: hidden;
+  list-style: none;
 }
 
 .list-wrapper{
   position: relative;
   display: grid;
   grid-template-columns: 1fr;
-
 }
-
-
 
 .restaurant-card {
   position: relative;
@@ -30,16 +28,8 @@
     position: absolute;
     bottom: 0;
     left: 0;
-
     .title{font-weight: bold; font-size: 18px}
     .category{font-size: 12px}
   }
 }
 
-/* MEDIA QUERIES */
-@media only screen and (min-width: 768px) {
-  /* For mobile phones: */
- .list-wrapper{
-   grid-template-columns: 1fr 1fr;
-  }
-}

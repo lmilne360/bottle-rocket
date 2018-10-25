@@ -1,33 +1,34 @@
 <div class="container" [ngClass]="{'active': active}">
 
-
-  <div #gmap style="width:auto;height:400px"></div>
-
   <div *ngIf="restaurant">
+    <div class="map-container">
+      <app-map [latlng]="latlng" [rName]="restaurant.name"></app-map>
+    </div>
 
     <div class="info-container">
 
       <div class="name-area">
-        <p class="name">{{restaurant.name}}</p>
-        <p class="category">{{restaurant.category}}</p>
+        <h4 class="name">{{restaurant.name}}</h4>
+        <h5 class="category">{{restaurant.category}}</h5>
       </div>
 
       <div class="info">
+
         <div class="address">
-          <p>{{restaurant?.location.address}}</p>
-          <p>{{restaurant?.location.crossStreet}}</p>
+          <h4>{{restaurant.location.address}}</h4>
+          <h5>{{restaurant.location.crossStreet}}</h5>
         </div>
 
-        <div class="phone">{{restaurant?.formattedPhone}}</div>
+        <div class="phone"><h5>{{restaurant.contact.formattedPhone}}</h5></div>
 
         <div class="twitter">
-         <p>{{ restaurant?.contact?.twitter ? '@'+restaurant.contact.twitter : null }}</p>
+          <h5>{{ restaurant.contact?.twitter ? '@'+restaurant.contact.twitter : null }}</h5>
         </div>
-      </div>
-    </div>
 
+      </div> <!-- info end-->
 
-
+    </div> <!-- info container end-->
 
   </div>
+
 </div>

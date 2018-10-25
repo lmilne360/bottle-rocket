@@ -1,6 +1,8 @@
 /// <reference types="@types/googlemaps" />
 import { Component, OnInit, Input, OnChanges } from '@angular/core';
-import { ViewChild } from '@angular/core';
+import { RestaurantService } from 'src/app/services/restaurant.service';
+import {} from 'rxjs/operators';
+import { ActivatedRoute } from '@angular/router';
 // import { } from 'googlemaps';
 
 @Component({
@@ -9,35 +11,36 @@ import { ViewChild } from '@angular/core';
   styleUrls: ['./details.component.scss']
 })
 export class DetailsComponent implements OnInit, OnChanges {
-  @Input()
   restaurant: any;
-  @ViewChild('gmap') gmapElement: any;
-  map: google.maps.Map;
   latlng: any;
 
-  @Input() active: boolean;
-
-  constructor() { }
+  constructor(private rService: RestaurantService, private route: ActivatedRoute) {}
 
   ngOnInit() {
+    const prodId = this.route.snapshot.paramMap.get('id');
+    const resArr: [] = this.rService.restaurants.getValue();
+    // tslint:disable-next-line:radix
+    this.restaurant = resArr[parseInt(prodId)];
     this.setLatLong();
-    const mapProp = {
-      // center: new google.maps.LatLng(18.5793, 73.8143),
-      center: new google.maps.LatLng(this.latlng.lat, this.latlng.lng),
-      zoom: 15,
-      mapTypeId: google.maps.MapTypeId.ROADMAP
-    };
-  this.map = new google.maps.Map(this.gmapElement.nativeElement, mapProp);
   }
+
   ngOnChanges() {
     this.setLatLong();
-    this.map.setCenter(this.latlng);
   }
+
   setLatLong() {
     if (this.restaurant) {
-      this.latlng = {lat: this.restaurant.location.lat , lng: this.restaurant.location.lng};
+      this.latlng = {
+        lat: this.restaurant.location.lat,
+        lng: this.restaurant.location.lng
+      };
+    } else if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition( pos => {
+        this.latlng = {lat: pos.coords.latitude, lng: pos.coords.longitude};
+      });
     } else {
-      this.latlng = {lat: 18.5793, lng: 73.8143};
+      // fallback latlng value
+      this.latlng = { lat: 18.5793, lng: 73.8143 };
     }
   }
 }
